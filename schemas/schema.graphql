@@ -16,10 +16,10 @@ type Pokemon {
   id: ID!
 
   # The identifier of this Pokémon
-  number: String
+  number: String!
 
   # The name of this Pokémon
-  name: String
+  name: String!
 
   # The minimum and maximum weight of this Pokémon
   weight: PokemonDimension
@@ -31,7 +31,7 @@ type Pokemon {
   classification: String
 
   # The type(s) of this Pokémon
-  types: [String]
+  types: [PokemonTypeEnum!]!
 
   # The type(s) of Pokémons that this Pokémon is resistant to
   resistant: [String]
@@ -54,7 +54,7 @@ type Pokemon {
 
   # The maximum HP of this Pokémon
   maxHP: Int
-  image: String
+  image: String!
 }
 
 # Represents a Pokémon's attack types
@@ -84,9 +84,30 @@ type PokemonEvolutionRequirement {
   name: String
 }
 
+enum PokemonTypeEnum {
+  Grass
+  Poison
+  Fire
+  Flying
+  Water
+  Bug
+  Normal
+  Electric
+  Ground
+  Fairy
+  Fighting
+  Psychic
+  Rock
+  Steel
+  Ice
+  Ghost
+  Dragon
+}
+
 # Query any Pokémon by number or name
 type Query {
   query: Query
-  pokemons(first: Int!): [Pokemon]
+  pokemons(first: Int!): [Pokemon!]!
+  pokemonByName(name: String!): [Pokemon!]!
   pokemon(id: String, name: String): Pokemon
 }

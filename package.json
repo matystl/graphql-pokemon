@@ -44,6 +44,7 @@
     "build": "rm -rf dist/* && babel src --out-dir dist --copy-files",
     "build-schema": "babel-node ./scripts/buildSchema.js",
     "start": "node dist/index.js",
-    "watch": "nodemon src/index.js --exec babel-node --copy-files"
+    "watch": "nodemon src/index.js --exec babel-node --copy-files",
+    "all": "npm run build-schema && npm run build && npm run start"
   }
 }
